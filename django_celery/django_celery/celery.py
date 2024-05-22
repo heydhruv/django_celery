@@ -18,7 +18,9 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 
-@app.task()
-def add(x, y):
-    sleep(20)  # import time
-    return x+y
+app.conf.beat_schedule = {
+    'every-10-seconds': {
+        'task': 'app.task.scad',
+        'schedule': 5,
+    },
+}

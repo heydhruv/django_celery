@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'app',
+    'django_celery_results',
+    'django_celery_beat',
+
 ]
 
 MIDDLEWARE = [
@@ -120,5 +123,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Celery settings
 
 CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = 'django-db'
 CELERY_TIMEZONE = "Asia/Kolkata"
-# INVENIO_CELERY_BROKER_URL = 'amqp: //guest:guest@mq:6379//'
+CELERY_RESULT_EXTENED = True
+
